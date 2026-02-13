@@ -1,0 +1,167 @@
+# Cloud Portfolio - Even's MOUNGALA
+
+le grojet est dispo sur github
+
+https://github.com/Evens18/cloud-portfolio
+
+Portfolio professionnel moderne pour Cloud Architect & DevOps Engineer, développé avec Java EE (Servlets/JSP), HTML/CSS/JavaScript, et déployable sur Apache Tomcat 10.
+
+
+> **Note :** Ce projet est une application web Java dynamique avec un formulaire de contact fonctionnel et un design responsive sobre et élégant.
+
+## 🚀 Fonctionnalités
+
+- Design responsive (mobile, tablette, desktop)
+- Animations subtiles (typing effect, scroll animations)
+- Filtrage des projets portfolio
+- Formulaire de contact avec validation et envoi d'email (via JavaMail)
+- Barres de compétences animées
+- Navigation fluide avec active link
+- Certifications et services mis en avant
+- Déploiement facile sur Tomcat
+
+## 🛠️ Technologies utilisées
+
+- **Backend** : Java 11, Jakarta Servlet 5.0, JSP, JSTL
+- **Frontend** : HTML5, CSS3, JavaScript (vanilla), Font Awesome 6
+- **Serveur** : Apache Tomcat 10
+- **Build** : Maven
+- **Email** : Jakarta Mail (configurable)
+
+## 📁 Structure du projet
+
+```
+cloud-portfolio/
+├── pom.xml
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/
+│       │       └── evensmoungala/
+│       │           └── ContactServlet.java
+│       └── webapp/
+│           ├── WEB-INF/
+│           │   └── web.xml
+│           ├── assets/
+│           │   ├── css/
+│           │   │   └── style.css
+│           │   └── js/
+│           │       └── script.js
+│           ├── images/
+│           │   └── (vos images)
+│           └── index.jsp
+└── README.md
+```
+
+## 🔧 Prérequis
+
+- **Java JDK 11** ou supérieur
+- **Apache Maven 3.6+**
+- **Apache Tomcat 10** (ou un autre serveur compatible Jakarta EE 9+)
+- Navigateur web moderne
+
+## ⚙️ Installation et exécution locale
+
+### 1. Cloner le dépôt
+
+```bash
+git clone https://github.com/votre-utilisateur/cloud-portfolio.git
+cd cloud-portfolio
+```
+
+### 2. Compiler le projet avec Maven
+
+```bash
+mvn clean package
+```
+
+### 3. Déployer sur Tomcat
+
+- Copiez le fichier `target/cloud-portfolio.war` dans le dossier `webapps` de votre Tomcat.
+- Démarrez Tomcat : `catalina.sh run` (Linux/Mac) ou `catalina.bat run` (Windows).
+- Accédez à l'application : [http://localhost:8080/cloud-portfolio](http://localhost:8080/cloud-portfolio)
+
+Ou utilisez le plugin Maven Tomcat (voir section "Développement").
+
+## 💻 Développement en direct (Live Reload)
+
+Pour une expérience de développement fluide (comme Live Server), utilisez le script Python fourni :
+
+```bash
+# Installer les dépendances Python
+pip install watchdog
+
+# Lancer le script de surveillance
+python watch.py
+```
+
+Ce script surveille les modifications des fichiers sources et les synchronise automatiquement avec le répertoire de déploiement Tomcat. Rafraîchissez simplement votre navigateur pour voir les changements.
+
+> **Note :** Assurez-vous d'avoir configuré les permissions d'écriture sur le répertoire de déploiement Tomcat (voir section "Permissions").
+
+## 🔐 Configuration du formulaire de contact
+
+Pour que l'envoi d'email fonctionne, vous devez configurer vos identifiants SMTP dans `ContactServlet.java` :
+
+```java
+// Exemple avec Gmail
+props.put("mail.smtp.host", "smtp.gmail.com");
+props.put("mail.smtp.port", "587");
+props.put("mail.smtp.auth", "true");
+props.put("mail.smtp.starttls.enable", "true");
+
+// Authentification
+Session session = Session.getInstance(props,
+    new Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication("votre-email@gmail.com", "mot-de-passe");
+        }
+    });
+```
+
+Pour des raisons de sécurité, ne commitez pas vos identifiants. Utilisez des variables d'environnement ou un fichier de configuration externe.
+
+## 🎨 Personnalisation
+
+### Couleurs
+
+Les couleurs principales sont définies en variables CSS dans `assets/css/style.css` :
+
+```css
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #1abc9c;
+    /* ... */
+}
+```
+
+Modifiez ces valeurs pour changer l'apparence.
+
+### Contenu
+
+- **Informations personnelles** : Éditez `index.jsp` pour changer le nom, la description, les coordonnées.
+- **Compétences** : Ajustez les pourcentages et les libellés dans la section `skills`.
+- **Projets** : Ajoutez/modifiez les cartes de portfolio dans la section `portfolio`.
+- **Images** : Remplacez les URLs Unsplash par vos propres images dans le dossier `images/`.
+
+
+## 👤 Auteur
+
+**Even's MOUNGALA**  
+Cloud Architect & DevOps Engineer  
+[GitHub](https://github.com/Evens18)
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Vous êtes libre de l'utiliser et de le modifier pour vos besoins personnels ou professionnels.
+
+---
+
+## 🙏 Remerciements
+
+- [Font Awesome](https://fontawesome.com) pour les icônes
+- [Unsplash](https://unsplash.com) pour les images placeholder
+- [Watchdog](https://github.com/gorakhargosh/watchdog) pour la surveillance de fichiers en Python
+
+---
